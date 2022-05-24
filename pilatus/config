@@ -1,0 +1,5 @@
+NAME=pilatus
+USER=softioc
+HOST=xf19id1-ioc2
+PORT=4150
+CHDIR="/epics/src/pilatus"

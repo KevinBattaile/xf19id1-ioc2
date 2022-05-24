@@ -1,0 +1,5 @@
+NAME=galil7
+USER=softioc
+HOST=xf19id1-ioc2
+PORT=4057
+CHDIR="/epics/src/galil-mc/iocBoot/ioc-$NAME"

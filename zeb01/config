@@ -1,0 +1,5 @@
+NAME=zeb01
+USER=softioc
+HOST=xf19id1-ioc2
+PORT=4152
+CHDIR="/epics/src/zebra-iocs/iocBoot/ioc-$NAME"

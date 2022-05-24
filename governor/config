@@ -1,0 +1,4 @@
+NAME=governor
+USER=softioc
+PORT=4101
+HOST=xf19id1-ioc2

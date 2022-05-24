@@ -1,0 +1,5 @@
+NAME=virtmotors
+USER=softioc
+HOST=xf19id1-ioc2
+PORT=4100
+CHDIR="/epics/src/virtmotors/iocBoot/ioc-$NAME"

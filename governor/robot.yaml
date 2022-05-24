@@ -1,0 +1,424 @@
+name: Robot
+
+devices:
+  bsy:
+    type: Motor
+    name: Beam Stop Y
+    pv: XF:17IDC-ES:FMX{BS:1-Ax:Y}Mtr
+    tolerance: 0.05
+    timeout: 5
+    positions:
+      Up: -10.8
+      Down: -60.0
+      Out: -12.8
+  bsz:
+    type: Motor
+    name: Beam Stop Z
+    pv: XF:17IDC-ES:FMX{BS:1-Ax:Z}Mtr
+    tolerance: 0.05
+    timeout: 5
+    positions:
+      Park: 48.0
+      DAQ: 15.0
+      Mic: 0.0
+  bsfx:
+    type: Motor
+    name: BSFX
+    pv: XF:17IDC-ES:FMX{BS:1-Ax:FX}Mtr
+    tolerance: 50
+    timeout: 5
+    positions:
+      Set: -280.0
+  bsfy:
+    type: Motor
+    name: BSFY
+    pv: XF:17IDC-ES:FMX{BS:1-Ax:FY}Mtr
+    tolerance: 50
+    timeout: 5
+    positions:
+      Set: 200.0
+  li:
+    type: Motor
+    name: Light Y
+    pv: XF:17IDC-ES:FMX{Light:1-Ax:Y}Mtr
+    tolerance: 0.1
+    timeout: 5
+    positions:
+      In: 0.0
+      Out: -80.0
+  li2:
+    type: Motor
+    name: Light Y 2
+    pv: XF:17IDC-ES:FMX{Light:1-Ax:Y}Mtr
+    tolerance: 0.1
+    timeout: 5
+    positions:
+      In: 0.0
+      Out: -80.0
+  cx:
+    type: Motor
+    name: Cryostream X
+    pv: XF:17IDC-ES:FMX{CS:1-Ax:X}Mtr
+    tolerance: 0.1
+    timeout: 5
+    positions:
+      In: 0.0
+      Out: 0.0
+  cxy:
+    type: Motor
+    name: Cryostream XY
+    pv: XF:17IDC-ES:FMX{CS:1-Ax:XY}Mtr
+    tolerance: 0.1
+    timeout: 5
+    positions:
+      Near: 2.0
+      Far: 12.0
+  dz:
+    type: Motor
+    name: Detector Z
+    pv: XF:17IDC-ES:FMX{Det-Ax:Z}Mtr
+    tolerance: 0.5
+    timeout: 5
+    positions:
+      In: 800.0
+      Out: 800.0
+      Near: 150.0
+      Far: 800.0
+  collixy:
+    type: Motor
+    name: Collimator XY
+    pv: XF:17IDC-ES:FMX{Colli:1-Ax:XY}Mtr
+    tolerance: 10
+    timeout: 5
+    positions:
+      In: 0.0
+      Near: -18000.0
+      Out: -40000.0
+  xrfx:
+    type: Motor
+    name: XRF X
+    pv: XF:17IDC-ES:FMX{XRF:1-Ax:X}Mtr
+    tolerance: 0.1
+    timeout: 5
+    positions:
+      Near: 0.0
+      Far: 42.0
+  xrfy:
+    type: Motor
+    name: XRF Y
+    pv: XF:17IDC-ES:FMX{XRF:1-Ax:Y}Mtr
+    tolerance: 0.1
+    timeout: 5
+    positions:
+      Up: 10.0
+      Down: -90.0
+  gx:
+    type: Motor
+    name: Gonio X
+    pv: XF:17IDC-ES:FMX{Gon:1-Ax:GX}Mtr
+    tolerance: 5
+    timeout: 5
+    positions:
+      Mount: 207300.0
+      Work: 207238.02
+      Near: 187300.0
+      Park: -180000.0
+  gy:
+    type: Motor
+    name: Gonio Y
+    pv: XF:17IDC-ES:FMX{Gon:1-Ax:GY}Mtr
+    tolerance: 5
+    timeout: 5
+    positions:
+      Mount: 12900.0
+      Work: 12916.0
+  gz:
+    type: Motor
+    name: Gonio Z
+    pv: XF:17IDC-ES:FMX{Gon:1-Ax:GZ}Mtr
+    tolerance: 5
+    timeout: 5
+    positions:
+      Mount: 4900.0
+      Work: 4900.0
+  go:
+    type: Motor
+    name: Gonio Omega
+    pv: XF:17IDC-ES:FMX{Gon:1-Ax:O}Mtr
+    tolerance: 0.1
+    timeout: 5
+    positions:
+      Mount: 0.0
+      Work: 0.0
+  gpy:
+    type: Motor
+    name: Gonio Pin Y
+    pv: XF:17IDC-ES:FMX{Gon:1-Ax:PY}Mtr
+    tolerance: 5
+    timeout: 5
+    positions:
+      Mount: -100.0
+      Work: -397.6668450131538
+  gpz:
+    type: Motor
+    name: Gonio Pin Z
+    pv: XF:17IDC-ES:FMX{Gon:1-Ax:PZ}Mtr
+    tolerance: 5
+    timeout: 5
+    positions:
+      Mount: 720.0
+      Work: 856.7605993545154
+  scinti:
+    type: Motor
+    name: Scinti XY
+    pv: XF:17IDC-ES:FMX{Scinti:1-Ax:XY}Mtr
+    tolerance: 0.1
+    timeout: 5
+    positions:
+      Out: -105.0
+      Diode: 3.0
+      Scinti: 0.0
+  dc:
+    type: Valve
+    name: Detector Cover
+    pv: XF:17IDC-ES:FMX{Det:FMX-Cover}
+    timeout: 5
+    positions:
+      Open: 1
+      Closed: 0
+#  sht:
+#    type: Motor
+#    Name: Shutter
+#    pv: XF17IDC-ES:FMX{Gon:1-Sht}
+#    tolerance: 1
+#    timeout: 5
+#    positions:
+#      Open: -6.0
+#      Closed: 14.0
+
+states:
+  M:
+    name: Maintenance
+  SE:
+    name: Sample Exchange
+    targets:
+      bsy: {target: Down, limits: [0.0, 0.0]}
+      bsz: {target: Park, limits: [0, 0.0]}
+      li: {target: Out, limits: [0, 0]}
+      cxy: {target: Far, limits: [0, 5.0]}
+      cx: {target: In, limits: [0, 0]}
+      dz: {target: Out, limits: [0, 1500.0]}
+      collixy: {target: Out, limits: [-55000.0, 0]}
+      xrfx: {target: Far, limits: [0, 0]}
+      xrfy: {target: Down, limits: [0, 0]}
+      gx: {target: Mount, limits: [0.0, 0.0]}
+      gy: {target: Mount, limits: [0.0, 0.0]}
+      gz: {target: Mount, limits: [0.0, 0.0]}
+      go: {target: Mount, limits: [0.0, 0.0]}
+      gpy: {target: Mount, limits: [-9.0, 9.0]}
+      gpz: {target: Mount, limits: [-9.0, 9.0]}
+      scinti: {target: Out, limits: [0.0, 0.0]}
+      dc: {target: Closed, limits: [0, 0]} # Don't allow dc to open/close
+      bsfx: {target: Set, limits: [0, 0]}
+      bsfy: {target: Set, limits: [0, 0]}
+  SA:
+    name: Sample Alignment
+    targets:
+      bsy: {target: Up, limits: [0, 0]}
+      bsz: {target: Park, limits: [0, 0]}
+      li: {target: In, limits: [-105.0, 1.0]}
+      li2: {target: Out, limits: [-1.0, 105.0]}
+      cxy: {target: Near, limits: [0, 0]}
+      cx: {target: In, limits: [0, 0]}
+      dz: {target: In, limits: [-1200.0, 1200.0]}
+      collixy: {target: Near, limits: [0, 0]}
+      xrfx: {target: Far, limits: [0, 0]}
+      xrfy: {target: Down, limits: [0, 0]}
+      gx: {target: Work, limits: [-10000.0, 10000.0], updateAfter: true}
+      gy: {target: Work, limits: [-2000.0, 2000.0]}
+      gz: {target: Work, limits: [-1000.0, 2000.0]}
+      go: {target: Work, limits: [-99999.0, 99999.0], updateAfter: true}
+      gpy: {target: Work, limits: [-8000.0, 8000.0], updateAfter: true}
+      gpz: {target: Work, limits: [-8000.0, 8000.0], updateAfter: true}
+      scinti: {target: Out, limits: [0.0, 0.0]}
+      dc: {target: Open, limits: [-1, 1]} # Allow dc to open/close
+      bsfx: {target: Set, limits: [0, 0]}
+      bsfy: {target: Set, limits: [0, 0]}
+  DA:
+    name: Data Acquisition
+    targets:
+      bsy: {target: Up, limits: [0, 0]}
+      bsz: {target: DAQ, limits: [-12.0, 31.0]}
+      li: {target: Out, limits: [0, 0]}
+      cxy: {target: Near, limits: [0, 0]}
+      cx: {target: In, limits: [0, 0]}
+      dz: {target: In, limits: [-200.0, 1000.0]}
+      collixy: {target: In, limits: [0, 0]}
+      xrfx: {target: Far, limits: [0, 0]}
+      xrfy: {target: Down, limits: [0, 0]}
+      gx: {target: Work, limits: [-10000.0, 4000.0], updateAfter: true}
+      gy: {target: Work, limits: [-2000.0, 2000.0]}
+      gz: {target: Work, limits: [-1000.0, 2000.0]}
+      go: {target: Work, limits: [-99999.0, 99999.0], updateAfter: true}
+      gpy: {target: Work, limits: [-8000.0, 8000.0], updateAfter: true}
+      gpz: {target: Work, limits: [-8000.0, 8000.0], updateAfter: true}
+      scinti: {target: Out, limits: [0.0, 0.0]}
+      dc: {target: Open, limits: [0, 0]}
+      bsfx: {target: Set, limits: [0, 0]}
+      bsfy: {target: Set, limits: [0, 0]}
+  DI:
+    name: DA Image
+    targets:
+      bsy: {target: Up, limits: [0, 0]}
+      bsz: {target: Park, limits: [-12.0, 31.0]}
+      li: {target: In, limits: [0, 0]}
+      cxy: {target: Near, limits: [0, 0]}
+      cx: {target: In, limits: [0, 0]}
+      dz: {target: In, limits: [-200.0, 1000.0]}
+      collixy: {target: In, limits: [0, 0]}
+      xrfx: {target: Far, limits: [0, 0]}
+      xrfy: {target: Down, limits: [0, 0]}
+      gx: {target: Work, limits: [-10000.0, 4000.0]}
+      gy: {target: Work, limits: [-2000.0, 2000.0]}
+      gz: {target: Work, limits: [-1000.0, 2000.0]}
+      go: {target: Work, limits: [-99999.0, 99999.0]}
+      gpy: {target: Work, limits: [-8000.0, 8000.0]}
+      gpz: {target: Work, limits: [-8000.0, 8000.0]}
+      scinti: {target: Out, limits: [0.0, 0.0]}
+      dc: {target: Open, limits: [0, 0]}
+      bsfx: {target: Set, limits: [0, 0]}
+      bsfy: {target: Set, limits: [0, 0]}
+  BL:
+    name: Beam Location
+    targets:
+      bsy: {target: Up, limits: [-3.0, 1.0]}
+      bsz: {target: Park, limits: [0, 0]}
+      li: {target: In, limits: [-101.0, 1.0]}
+      cxy: {target: Near, limits: [0.0, 0.0]}
+      cx: {target: Out, limits: [0.0, 0.0]}
+      dz: {target: Out, limits: [-1200.0, 1200.0]}
+      collixy: {target: In, limits: [-20000.0, 200.0]}
+      xrfx: {target: Far, limits: [0, 0]}
+      xrfy: {target: Down, limits: [0, 0]}
+      gx: {target: Work, limits: [-51000.0, 2000.0]}
+      gy: {target: Work, limits: [-2000.0, 2000.0]}
+      gz: {target: Work, limits: [-1000.0, 2000.0]}
+      go: {target: Work, limits: [-99999.0, 99999.0]}
+      gpy: {target: Work, limits: [-8000.0, 8000.0]}
+      gpz: {target: Work, limits: [-8000.0, 8000.0]}
+      scinti: {target: Out, limits: [-110.0, 5.0]}
+      dc: {target: Closed, limits: [0, 0]}
+      bsfx: {target: Set, limits: [0, 0]}
+      bsfy: {target: Set, limits: [0, 0]}
+  AB:
+    name: Automated Beam Location
+    targets:
+      bsy: {target: Up, limits: [0, 0]}
+      bsz: {target: Park, limits: [0, 0]}
+      li: {target: In, limits: [-101.0, 1.0]}
+      cxy: {target: Near, limits: [0.0, 0.0]}
+      cx: {target: Out, limits: [0.0, 0.0]}
+      dz: {target: Out, limits: [-1200.0, 1200.0]}
+      collixy: {target: In, limits: [-20000.0, 200.0]}
+      xrfx: {target: Far, limits: [0, 0]}
+      xrfy: {target: Down, limits: [0, 0]}
+      gx: {target: Near, limits: [-51000.0, 2000.0]}
+      gy: {target: Work, limits: [-2000.0, 2000.0]}
+      gz: {target: Work, limits: [-1000.0, 2000.0]}
+      go: {target: Work, limits: [-99999.0, 99999.0]}
+      gpy: {target: Work, limits: [-8000.0, 8000.0]}
+      gpz: {target: Work, limits: [-8000.0, 8000.0]}
+      scinti: {target: Scinti, limits: [-110.0, 5.0]}
+      dc: {target: Closed, limits: [-1, 1]}
+      bsfx: {target: Set, limits: [0, 0]}
+      bsfy: {target: Set, limits: [0, 0]}
+  BS:
+    name: Beam Stop Alignment
+    targets:
+      bsy: {target: Up, limits: [0, 0]}
+      bsz: {target: Mic, limits: [-3.0, 3.0]}
+      li: {target: Out, limits: [-1.0, 105.0]}
+      li2: {target: In, limits: [-105.0, 1.0]}
+      cxy: {target: Far, limits: [0.0, 0.0]}
+      cx: {target: Out, limits: [0.0, 0.0]}
+      dz: {target: Out, limits: [0, 0]}
+      collixy: {target: Out, limits: [0, 0]}
+      xrfx: {target: Far, limits: [0, 0]}
+      xrfy: {target: Down, limits: [0, 0]}
+      gx: {target: Near, limits: [-10000.0, 4000.0], updateAfter: true}
+      gy: {target: Work, limits: [-2000.0, 2000.0]}
+      gz: {target: Work, limits: [-1000.0, 2000.0]}
+      go: {target: Work, limits: [-99999.0, 99999.0]}
+      gpy: {target: Work, limits: [-8000.0, 8000.0], updateAfter: true}
+      gpz: {target: Work, limits: [-8000.0, 8000.0], updateAfter: true}
+      scinti: {target: Out, limits: [0, 0]}
+      dc: {target: Closed, limits: [0, 0]}
+      bsfx: {target: Set, limits: [0, 0]}
+      bsfy: {target: Set, limits: [0, 0]}
+  XF:
+    name: XRF
+    targets:
+      bsy: {target: Up, limits: [0, 0]}
+      bsz: {target: Park, limits: [0.0, 0]}
+      li: {target: Out, limits: [-101.0, 1.0]}
+      cxy: {target: Near, limits: [0.0, 0.0]}
+      cx: {target: In, limits: [0.0, 0.0]}
+      dz: {target: Out, limits: [0, 0]}
+      collixy: {target: In, limits: [-20000.0, 0.5]}
+      xrfx: {target: Near, limits: [0, 0]}
+      xrfy: {target: Up, limits: [-0.1, 0.1]}
+      gx: {target: Work, limits: [-10000.0, 4000.0], updateAfter: true}
+      gy: {target: Work, limits: [-2000.0, 2000.0]}
+      gz: {target: Work, limits: [-1000.0, 2000.0]}
+      go: {target: Work, limits: [-99999.0, 99999.0]}
+      gpy: {target: Work, limits: [-8000.0, 8000.0], updateAfter: true}
+      gpz: {target: Work, limits: [-8000.0, 8000.0], updateAfter: true}
+      scinti: {target: Out, limits: [0, 0]}
+      dc: {target: Closed, limits: [-1, 1]}
+      bsfx: {target: Set, limits: [0, 0]}
+      bsfy: {target: Set, limits: [0, 0]}
+
+init_state: M
+
+transitions:
+  M:
+    SE: [bsfx, bsfy, dz, dc, li, cxy, xrfx, xrfy, scinti, cx, bsz, bsy, collixy, gz,
+      gy, [gx, go, gpy, gpz]]
+  SE:
+    SA: [[go, bsfx, bsfy, cxy, cx, dz, dc, collixy, bsy, gy, xrfx, scinti, gz, li],
+      [xrfy, bsz], [gx, gpy, gpz]]
+  SA:
+    SE: [[bsfx, bsfy, cxy, cx, li, dz, dc, collixy, bsz, go, scinti, gz, gx, gpy,
+        gpz, gy, xrfx, bsy], xrfy]
+    DA: [[bsfx, bsfy, li, bsy], [bsz, xrfx, xrfy, collixy, cxy, cx, scinti, dz, dc,
+        gx, gy, gz, go, gpy, gpz]]
+    BL: [[bsfx, bsfy, cxy, cx, dz, dc, collixy, xrfx, xrfy, bsz, li, bsy, gx], [scinti,
+        gy, gz, go, gpy, gpz]]
+    AB: [[bsfx, bsfy, cxy, cx, dz, dc, collixy, xrfx, xrfy, bsz, li, bsy, gx], [scinti,
+        gy, gz, go, gpy, gpz]]
+    XF: [[bsfx, bsfy, li, bsy, bsz, xrfy], [collixy, cxy, cx, scinti, dz, dc, xrfx,
+        gx, gy, gz, go, gpy, gpz]]
+    BS: [[gx, bsfx, bsfy, cx, scinti, li, bsy], [bsz, collixy, cxy, dz, dc, xrfx,
+        xrfy, gy, gz, go, gpy, gpz], li2]
+  DA:
+    SA: [[bsfx, bsfy, bsz], [li, bsy, xrfx, xrfy, collixy, cxy, cx, scinti, dz, dc],
+      [gx, gy, gz, gpy, gpz]]
+    SE: [[bsfx, bsfy, collixy, dz, dc, bsz, cxy, xrfx, go, gpy, gpz, gy], xrfy, bsy,
+      cx, scinti, li, gz, gx]
+    DI: [[bsfx, bsfy, bsz], [li, bsy, xrfx, xrfy, collixy, cxy, cx, scinti, dz, dc],
+      [gx, gy, gz, gpy, gpz]]
+  BL:
+    SA: [[bsfx, bsfy, scinti, dz, dc, cx, cxy, collixy, xrfx, xrfy, bsz, li, bsy,
+        gz, gy], [gx, go, gpy, gpz]]
+  AB:
+    SA: [[bsfx, bsfy, scinti, dz, dc, cx, cxy, collixy, xrfx, xrfy, bsz, li, bsy,
+        gz, gy], [gx, go, gpy, gpz]]
+  BS:
+    SA: [li2, [bsfx, bsfy, scinti, dz, dc, cx, cxy, collixy, xrfx, xrfy, bsz], [li,
+        bsy, gz, gy, gx, go, gpy, gpz]]
+  XF:
+    SA: [bsfx, bsfy, bsz, li, bsy, xrfx, xrfy, collixy, cxy, cx, scinti, dz, dc, [
+        gx, gy, gz, go, gpy, gpz]]
+  DI:
+    DA: [[bsfx, bsfy, li, bsy], [bsz, xrfx, xrfy, collixy, cxy, cx, scinti, dz, dc,
+        gx, gy, gz, go, gpy, gpz]]
